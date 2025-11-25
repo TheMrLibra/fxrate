@@ -2,10 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import exchange_rates, conversion, auth
-from app.core.db import engine
-from app.core.models import Base
-
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="FX Rate Manager",

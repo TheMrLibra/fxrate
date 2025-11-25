@@ -23,6 +23,8 @@ fxrate/
 │   │   │   ├── exchange_rate_service.py
 │   │   │   └── conversion_service.py
 │   │   └── main.py
+│   ├── alembic/
+│   ├── alembic.ini
 │   ├── requirements.txt
 │   ├── seed_data.py
 │   └── .env.example
