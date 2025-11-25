@@ -16,3 +16,4 @@ def get_session() -> Session:
     finally:
         db.close()
 
+

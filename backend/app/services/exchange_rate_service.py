@@ -115,3 +115,4 @@ class ExchangeRateService:
             )
         return ExchangeRateRead.model_validate(rate)
 
+

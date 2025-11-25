@@ -77,3 +77,4 @@ class ExchangeRateRepository:
         self.session.delete(rate)
         self.session.commit()
 
+

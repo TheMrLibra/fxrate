@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, status
 from fastapi.security import OAuth2PasswordRequestForm
-
+from app.domain.schemas.auth import LoginRequest
 from app.core.security import get_current_active_user
 from app.domain.schemas.auth import UserCreate, UserRead, Token
 from app.services.auth_service import AuthService
@@ -25,7 +25,6 @@ def login(
     service: AuthService = Depends(get_auth_service),
 ):
     """Login and get access token."""
-    from app.domain.schemas.auth import LoginRequest
     login_data = LoginRequest(username=form_data.username, password=form_data.password)
     return service.login(login_data)
 

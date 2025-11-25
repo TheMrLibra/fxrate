@@ -17,3 +17,4 @@ class ConversionResult(BaseModel):
     rate: Decimal
     converted_amount: Decimal
 
+

@@ -81,3 +81,4 @@ def seed_exchange_rates():
 if __name__ == "__main__":
     seed_exchange_rates()
 
+

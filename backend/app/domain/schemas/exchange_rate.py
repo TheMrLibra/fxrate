@@ -33,3 +33,4 @@ class ExchangeRateFilter(BaseModel):
     to_currency: Optional[str] = None
     period: Optional[str] = None
 
+
