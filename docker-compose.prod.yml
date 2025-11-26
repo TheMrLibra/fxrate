@@ -14,36 +14,33 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     ports:
       - "8000:8000"
     environment:
       DATABASE_URL: postgresql://fxrate_user:fxrate_password@postgres:5432/fxrate_db
+      CORS_ORIGINS: https://fx.adamlibra.cz,http://fx.adamlibra.cz
     depends_on:
       postgres:
         condition: service_healthy
-    volumes:
-      - ./backend:/app
-    command: uvicorn app.main:app --host 0.0.0.0 --reload
+    restart: unless-stopped
 
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     ports:
-      - "5173:5173"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      - "3000:3000"
     depends_on:
       - backend
     environment:
-      - VITE_API_URL=http://localhost:8000
-    command: npm run dev -- --host 0.0.0.0
+      - VITE_API_URL=https://api.fx.adamlibra.cz
+    restart: unless-stopped
 
 volumes:
   postgres_data:
