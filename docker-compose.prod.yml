@@ -34,12 +34,12 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.prod
+      args:
+        VITE_API_URL: https://fx-api.adamlibra.cz
     ports:
       - "3000:3000"
     depends_on:
       - backend
-    environment:
-      - VITE_API_URL=https://fx-api.adamlibra.cz
     restart: unless-stopped
 
 volumes:
